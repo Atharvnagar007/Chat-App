@@ -1,0 +1,18 @@
+.video-call-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75vw; /* 75% of the viewport width */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Optional: A dark background to cover other UI elements */
+    z-index: 9999; /* Ensure it is on top of any other content */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid #444; /* Optional: Add a border on the left side */
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow on the left side */
+  }
+  
