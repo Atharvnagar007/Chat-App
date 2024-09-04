@@ -16,7 +16,7 @@ const Login = () => {
     file: null,
     url: "",
   });
-   const { fetchUserInfo } = useUserStore();
+  const { fetchUserInfo } = useUserStore();
   const [loading, setLoading] = useState(false);
 
   const handleAvatar = (e) => {
@@ -38,10 +38,12 @@ const Login = () => {
     // VALIDATE INPUTS
     if (!username || !email || !password) {
       console.log("Validation Error: Please enter all inputs");
-      return toast.warn("Please enter inputs!");
+      setLoading(false);
+      return toast.warn("Please enter all inputs!");
     }
     if (!avatar.file) {
       console.log("Validation Error: Avatar not uploaded");
+      setLoading(false);
       return toast.warn("Please upload an avatar!");
     }
 
@@ -51,6 +53,7 @@ const Login = () => {
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
       console.log("Validation Error: Username already exists");
+      setLoading(false);
       return toast.warn("Select another username");
     }
 
@@ -116,6 +119,9 @@ const Login = () => {
       <div className="separator"></div>
       <div className="item">
         <h2>Create an Account</h2>
+        <p className="warning">
+          Note: Please make sure to fill out all fields and upload an avatar.
+        </p>
         <form onSubmit={handleRegister}>
           <label htmlFor="file">
             <img src={avatar.url || "./avatar.png"} alt="" />
@@ -138,3 +144,4 @@ const Login = () => {
 };
 
 export default Login;
+
